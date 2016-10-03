@@ -8,9 +8,70 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.miami.c11305010.timedtictactoe.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <!-- For Player 1 -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Player1"
+                android:textSize="@dimen/player_textsize">
+            </TextView>
+            <ImageView
+                android:layout_width="@dimen/image_dimen"
+                android:layout_height="@dimen/image_dimen">
+            </ImageView>
+        </LinearLayout>
+        <RatingBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rating_bar_h">
+        </RatingBar>
+    </LinearLayout>
+
+    <!-- For Player 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Player2"
+                android:textSize="@dimen/player_textsize">
+            </TextView>
+            <ImageView
+                android:layout_width="@dimen/image_dimen"
+                android:layout_height="@dimen/image_dimen">
+            </ImageView>
+        </LinearLayout>
+        <RatingBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rating_bar_h">
+        </RatingBar>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height" />
+    </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
