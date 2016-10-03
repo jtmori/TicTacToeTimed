@@ -3,4 +3,6 @@
 
     <string name="Player1">Player 1</string>
     <string name="Player2">Player 2</string>
+
+    <string name="ButtonText">START</string>
 </resources>

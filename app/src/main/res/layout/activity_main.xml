@@ -22,17 +22,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/player1_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Player1"
                 android:textSize="@dimen/player_textsize">
             </TextView>
             <ImageView
+                android:id="@+id/player1_icon"
                 android:layout_width="@dimen/image_dimen"
                 android:layout_height="@dimen/image_dimen">
             </ImageView>
         </LinearLayout>
         <RatingBar
+            android:id="@+id/player1_rating"
             android:layout_width="match_parent"
             android:layout_height="@dimen/rating_bar_h">
         </RatingBar>
@@ -48,17 +51,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/player2_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Player2"
                 android:textSize="@dimen/player_textsize">
             </TextView>
             <ImageView
+                android:id="@+id/player2_icon"
                 android:layout_width="@dimen/image_dimen"
                 android:layout_height="@dimen/image_dimen">
             </ImageView>
         </LinearLayout>
         <RatingBar
+            android:id="@+id/player2_rating"
             android:layout_width="match_parent"
             android:layout_height="@dimen/rating_bar_h">
         </RatingBar>
@@ -70,8 +76,13 @@
         android:layout_gravity="center"
         android:gravity="center">
         <Button
+            android:id="@+id/start_button"
             android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height" />
+            android:layout_height="@dimen/button_height"
+            android:text="@string/ButtonText"
+            android:textSize="@dimen/button_text"
+            android:onClick="onClickHandler">
+        </Button>
     </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
