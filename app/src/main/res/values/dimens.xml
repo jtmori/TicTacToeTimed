@@ -15,4 +15,10 @@
     <dimen name="progress_height">40dp</dimen>
 
     <dimen name="grid_dimen">300dp</dimen>
+
+
+    <integer name="max_score">5</integer>
+    <integer name="start_score">0</integer>
+    <integer name="bar_time">500</integer>
+    <integer name="bar_click_time">5</integer>
 </resources>

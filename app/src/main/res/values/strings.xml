@@ -5,4 +5,6 @@
     <string name="Player2">Player 2</string>
 
     <string name="ButtonText">START</string>
+
+    <string name="winnerKey">com.miami.c11305010.timedtictactoe.the_winner</string>
 </resources>
