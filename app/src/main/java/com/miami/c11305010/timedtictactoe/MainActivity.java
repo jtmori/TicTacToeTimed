@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             //reset tournament
             case R.id.menuReset:
+                //TODO
                 break;
             default:
                 break;
