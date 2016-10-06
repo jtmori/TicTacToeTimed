@@ -1,0 +1,34 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.miami.c11305010.timedtictactoe.MainActivity">
+
+    <item
+        android:id="@+id/menu_choose_time"
+        android:orderInCategory="100"
+        android:title="@string/gameTime"
+        app:showAsAction="never">
+        <menu android:id="@+id/choose_time_submenu">
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/one_sec"
+                    android:title="@string/oneSec">
+                </item>
+                <item android:id="@+id/two_sec"
+                    android:title="@string/twoSec">
+                </item>
+                <item android:id="@+id/five_sec"
+                    android:title="@string/fiveSec">
+                </item>
+                <item android:id="@+id/ten_sec"
+                    android:title="@string/tenSec">
+                </item>
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menuReset"
+        android:orderInCategory="100"
+        android:title="@string/menuReset"
+        app:showAsAction="never"/>
+</menu>

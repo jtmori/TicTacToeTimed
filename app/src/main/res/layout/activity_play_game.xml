@@ -20,29 +20,38 @@
             <ImageView
                 android:id="@+id/player1_playicon"
                 android:layout_width="@dimen/image_dimen"
-                android:layout_height="@dimen/image_dimen" />
-            <ImageView
-                android:id="@+id/player2_playicon"
-                android:layout_width="@dimen/image_dimen"
-                android:layout_height="@dimen/image_dimen" />
+                android:layout_height="@dimen/image_dimen"
+                android:layout_gravity="left"
+                android:src="@drawable/p1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <ImageView
+                    android:id="@+id/player2_playicon"
+                    android:layout_width="@dimen/image_dimen"
+                    android:layout_height="@dimen/image_dimen"
+                    android:src="@drawable/p2"/>
+            </LinearLayout>
         </LinearLayout>
         <ProgressBar
             android:id="@+id/progress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/progress_height" />
+            android:layout_height="@dimen/progress_height"
+            android:max="@integer/bar_time"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_gravity="center">
+            android:gravity="center_horizontal"
+            >
             <GridLayout
                 android:id="@+id/tictactoe"
                 android:layout_width="@dimen/grid_dimen"
                 android:layout_height="@dimen/grid_dimen"
                 android:columnCount="3"
                 android:rowCount="3"
-                android:layout_gravity="center"
-                android:gravity="center">
+                android:layout_gravity="center">
                 <Button />
                 <Button />
                 <Button />

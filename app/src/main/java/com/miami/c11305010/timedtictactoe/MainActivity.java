@@ -3,6 +3,8 @@ package com.miami.c11305010.timedtictactoe;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -14,6 +16,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu/add any items to the action bar.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //on main activity menu option selection:
+        switch (id) {
+            //change game time to 1, 2, 5, or 10 seconds
+            case R.id.one_sec:
+                break;
+            case R.id.two_sec:
+                break;
+            case R.id.five_sec:
+                break;
+            case R.id.ten_sec:
+                break;
+            //reset tournament
+            case R.id.menuReset:
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void onClickHandler(View view){

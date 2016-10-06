@@ -30,10 +30,10 @@ public class PlayGameActivity extends AppCompatActivity {
             progressBar.setProgress(progressBar.getProgress()+ barClickTime);
             if (progressBar.getProgress() >= getResources().getInteger(R.integer.bar_time)) {
                 Log.i("IN runnable", "Progress bar full");
-                Intent returnIntent = new Intent();
-                setResult(RESULT_OK, returnIntent);
-                progressBar.setProgress(0);
-                finish();
+                //Intent returnIntent = new Intent();
+                //setResult(RESULT_OK, returnIntent);
+                //progressBar.setProgress(0);
+                //finish();
             }
             if (!myHandler.postDelayed(myProgresser,barClickTime)) {
                 Log.e("ERROR","Cannot postDelayed");

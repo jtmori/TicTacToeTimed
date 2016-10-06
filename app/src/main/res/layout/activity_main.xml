@@ -31,7 +31,8 @@
             <ImageView
                 android:id="@+id/player1_icon"
                 android:layout_width="@dimen/image_dimen"
-                android:layout_height="@dimen/image_dimen">
+                android:layout_height="@dimen/image_dimen"
+                android:src="@drawable/p1">
             </ImageView>
         </LinearLayout>
         <RatingBar
@@ -60,7 +61,8 @@
             <ImageView
                 android:id="@+id/player2_icon"
                 android:layout_width="@dimen/image_dimen"
-                android:layout_height="@dimen/image_dimen">
+                android:layout_height="@dimen/image_dimen"
+                android:src="@drawable/p2">
             </ImageView>
         </LinearLayout>
         <RatingBar
