@@ -12,11 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
     <!-- For Player 1 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <!-- Contains name and image -->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -28,17 +30,29 @@
                 android:text="@string/Player1"
                 android:textSize="@dimen/player_textsize">
             </TextView>
-            <ImageView
-                android:id="@+id/player1_icon"
-                android:layout_width="@dimen/image_dimen"
-                android:layout_height="@dimen/image_dimen"
-                android:src="@drawable/p1">
-            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/image_margin"
+                android:gravity="right">
+                <ImageView
+                    android:id="@+id/player1_icon"
+                    android:layout_width="@dimen/image_dimen"
+                    android:layout_height="@dimen/image_dimen"
+                    android:src="@drawable/p1"
+                    android:background="@color/image_background"
+                    android:padding="@dimen/image_padding">
+                </ImageView>
+            </LinearLayout>
         </LinearLayout>
+        <!-- P1 Rating Bar -->
         <RatingBar
             android:id="@+id/player1_rating"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/rating_bar_h">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="@integer/max_score"
+            android:layout_gravity="center_horizontal">
         </RatingBar>
     </LinearLayout>
 
@@ -47,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <!-- Contains name and image -->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -58,20 +73,34 @@
                 android:text="@string/Player2"
                 android:textSize="@dimen/player_textsize">
             </TextView>
-            <ImageView
-                android:id="@+id/player2_icon"
-                android:layout_width="@dimen/image_dimen"
-                android:layout_height="@dimen/image_dimen"
-                android:src="@drawable/p2">
-            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/image_margin"
+                android:gravity="right">
+                <ImageView
+                    android:id="@+id/player2_icon"
+                    android:layout_width="@dimen/image_dimen"
+                    android:layout_height="@dimen/image_dimen"
+                    android:src="@drawable/p2"
+                    android:layout_gravity="right"
+                    android:background="@color/image_background"
+                    android:padding="@dimen/image_padding">
+                </ImageView>
+             </LinearLayout>
         </LinearLayout>
+        <!-- P2 Rating Bar -->
         <RatingBar
             android:id="@+id/player2_rating"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/rating_bar_h">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="@integer/max_score"
+            android:layout_gravity="center_horizontal">
         </RatingBar>
     </LinearLayout>
 
+    <!-- START BUTTON -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

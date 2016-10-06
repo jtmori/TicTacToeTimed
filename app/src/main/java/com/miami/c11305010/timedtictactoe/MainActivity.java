@@ -6,18 +6,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     protected final int PLAY_GAME_RETURN_OKAY = 1;
-
+    protected int gameTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
+//------------------------------------------------------------
+    // Make the options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu/add any items to the action bar.
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+//------------------------------------------------------------
+    // Menu can change game time or reset tournament
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -33,13 +38,18 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             //change game time to 1, 2, 5, or 10 seconds
             case R.id.one_sec:
+                gameTime = 1;
                 break;
             case R.id.two_sec:
+                gameTime = 2;
                 break;
             case R.id.five_sec:
+                gameTime = 5;
                 break;
             case R.id.ten_sec:
+                gameTime = 10;
                 break;
+
             //reset tournament
             case R.id.menuReset:
                 break;
@@ -50,11 +60,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+//-----------------------------------------------------------
+    // Handles the start button
     public void onClickHandler(View view){
         int id = view.getId();
         switch (id){
             case R.id.start_button:
                 Intent intent = new Intent(MainActivity.this, PlayGameActivity.class);
+                intent.putExtra(getResources().getString(R.string.gameTimeKey), gameTime);
                 startActivityForResult(intent, PLAY_GAME_RETURN_OKAY);
                 break;
             default:
@@ -62,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+//-------------------------------------------------------------
+    // Decides if tournament is over or if players stars is incremented
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         int increment = 1;

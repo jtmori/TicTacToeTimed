@@ -6,10 +6,11 @@
 
     <string name="ButtonText">START</string>
 
+    <string name="gameTimeKey">com.miami.c11305010.timedtictactoe.game_time</string>
     <string name="winnerKey">com.miami.c11305010.timedtictactoe.the_winner</string>
 
     <!-- MENU STRING -->
-    <string name="gameTime">Select Game Time</string>
+    <string name="menuGameTime">Select Game Time</string>
     <string name="menuReset">Reset Tournament</string>
 
     <!-- TIME SUBMENU STRINGS -->
