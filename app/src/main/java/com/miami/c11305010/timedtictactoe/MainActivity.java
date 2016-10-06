@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menuReset:
                 p1_ratingBar.setRating(0);
                 p2_ratingBar.setRating(0);
-                start_button.setEnabled(true);
+                //start_button.setEnabled(true);
+                start_button.setVisibility(View.VISIBLE);
                 gameTime = 10;
                 break;
             default:
@@ -87,9 +88,12 @@ public class MainActivity extends AppCompatActivity {
         int id = view.getId();
         switch (id){
             case R.id.start_button:
+                //opens play game activity
                 Intent intent = new Intent(MainActivity.this, PlayGameActivity.class);
+                //decide who goes first
                 int first = whoGoesFirst();
                 intent.putExtra(getResources().getString(R.string.goesFirstKey), first);
+                //decide the game time in case gametime menu was selected
                 intent.putExtra(getResources().getString(R.string.gameTimeKey), gameTime);
                 startActivityForResult(intent, PLAY_GAME_RETURN_OKAY);
                 break;
@@ -99,10 +103,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //-------------------------------------------------------------
+    //randomly decides who goes first
     private int whoGoesFirst(){
         Random rn = new Random();
         int random = rn.nextInt(10) + 1;
 
+        //separate changes based off who went already
+        //gives player who has gone first more a lower chance to go again
+        //initially 5
         if (random <= separate){
             separate--;
             return 1;
@@ -124,19 +132,24 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK){
                     int winner = data.getExtras().getInt(getResources().getString(R.string.winnerKey));
 
+                    //based off winner: increment rating bar, check if rating is 5
                     if (winner == 1){  //data = 1 -> player 1 won
                         p1_ratingBar.setRating(p1_ratingBar.getRating()+increment);
                         final int rating = (int)p1_ratingBar.getRating();
                         if(rating == (getResources().getInteger(R.integer.max_score))){
                             Toast.makeText(MainActivity.this, "P1 WINS!", Toast.LENGTH_LONG).show();
-                            start_button.setEnabled(false);
+                            //disabling start button looks nicer imo
+                            //start_button.setEnabled(false);
+                            start_button.setVisibility(View.INVISIBLE);
                         }
                     } else if (winner == 2){ //data = 2 -> player 2 won
                         p2_ratingBar.setRating(p2_ratingBar.getRating()+increment);
                         final int rating = (int)p2_ratingBar.getRating();
                         if(rating == (getResources().getInteger(R.integer.max_score))){
                             Toast.makeText(MainActivity.this, "P2 WINS!", Toast.LENGTH_LONG).show();
-                            start_button.setEnabled(false);
+                            //disabling start button looks nicer imo
+                            //start_button.setEnabled(false);
+                            start_button.setVisibility(View.INVISIBLE);
                         }
                     } else
                         Toast.makeText(MainActivity.this, "NO WINNER", Toast.LENGTH_LONG).show();

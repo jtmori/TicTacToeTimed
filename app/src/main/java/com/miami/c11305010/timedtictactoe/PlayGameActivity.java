@@ -38,7 +38,6 @@ public class PlayGameActivity extends AppCompatActivity {
 
     private int [] tictacPlaces;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +53,12 @@ public class PlayGameActivity extends AppCompatActivity {
     }
 
 //-----------------------------------------------------------------
+    //sets first player using goesFirstKey from Main Activity
     private void setFirstPlayer() {
         int first = getIntent().getIntExtra(getResources().getString(R.string.goesFirstKey), 0);
         if (first == 1) {
             currentPlayer = PLAYER_ONE;
-        } else {
+        } else {    //otherwise p2
             currentPlayer = PLAYER_TWO;
         }
 
@@ -66,6 +66,7 @@ public class PlayGameActivity extends AppCompatActivity {
     }
 
 //-----------------------------------------------------------------
+    // Changes which image is visible above progress bar based off current player
     private void setImageVisibility(){
         ImageView player1 = (ImageView)findViewById(R.id.player1_playicon);
         ImageView player2 = (ImageView)findViewById(R.id.player2_playicon);
@@ -110,7 +111,6 @@ public class PlayGameActivity extends AppCompatActivity {
                 progressBar.setProgress(0);
                 //switch players
                 currentPlayer = !currentPlayer;
-
                 setImageVisibility();
             }
             if (!myHandler.postDelayed(myProgresser,barClickTime)) {
@@ -132,7 +132,7 @@ public class PlayGameActivity extends AppCompatActivity {
             rscId = R.drawable.p2;
         }
 
-        //switch statement for buttons
+        //switch statement for image buttons
         switch (id){
             case R.id.place00:
                 place = 0;
@@ -178,7 +178,7 @@ public class PlayGameActivity extends AppCompatActivity {
 
 //------------------------------------------------------------------------
     private void checkWinner(int place, int id, int rscId) {
-        //if already clicked, exit
+        //if already clicked by a player in tictac array, exit
         if (tictacPlaces[place] != 0) {
             return;
         }
@@ -210,7 +210,7 @@ public class PlayGameActivity extends AppCompatActivity {
         }
 
         //check Diagonal win
-        if (place == 0 || place == 2 || place == 6 || place == 8){
+        if (place == 0 || place == 2 || place == 6 || place == 8 || place == 4){
             if(checkDiagonal(place, player)){
                 returnWinner(player);
             }
@@ -231,6 +231,8 @@ public class PlayGameActivity extends AppCompatActivity {
     }
 
 //-----------------------------------------------------------------------
+    //Each function below returns true if given player won given the place most recently clicked
+
     private Boolean checkDiagonal(int place, int player){
         if (place == 0 || place == 8 || place == 4){
             if (tictacPlaces[0] == player && tictacPlaces[4] == player && tictacPlaces[8] == player){
@@ -243,7 +245,7 @@ public class PlayGameActivity extends AppCompatActivity {
         }
         return false;
     }
-
+    //-------------------------------------------------------------
     private Boolean checkHorizontal(int place, int player){
         if (place == 0 || place == 1 || place == 2){
             if (tictacPlaces[0] == player && tictacPlaces[1] == player && tictacPlaces[2] == player){
@@ -260,7 +262,7 @@ public class PlayGameActivity extends AppCompatActivity {
         }
         return false;
     }
-
+    //--------------------------------------------------------------
     private Boolean checkVertical(int place, int player){
         if (place == 0 || place == 3 || place == 6){
             if (tictacPlaces[0] == player && tictacPlaces[3] == player && tictacPlaces[6] == player){
@@ -292,6 +294,8 @@ public class PlayGameActivity extends AppCompatActivity {
         finish();
     }
 
+//--------------------------------------------------------------------------
+    //If back button presssed, should do nothing
     @Override
     public void onBackPressed() {
         Intent gobackIntent = new Intent();
