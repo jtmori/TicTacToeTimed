@@ -6,17 +6,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     protected final int PLAY_GAME_RETURN_OKAY = 1;
-    protected int gameTime = 0;
+    protected int gameTime;
+    protected int separate;
+
+    RatingBar p1_ratingBar;
+    RatingBar p2_ratingBar;
+    Button start_button;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gameTime = 0;
+        separate = 5;
+        p1_ratingBar = (RatingBar)findViewById(R.id.player1_rating);
+        p2_ratingBar = (RatingBar)findViewById(R.id.player2_rating);
+        start_button = (Button)findViewById(R.id.start_button);
+
     }
 
 //------------------------------------------------------------
@@ -50,9 +67,12 @@ public class MainActivity extends AppCompatActivity {
                 gameTime = 10;
                 break;
 
-            //reset tournament
+            //reset tournament (rating bars, button, and gametime)
             case R.id.menuReset:
-                //TODO
+                p1_ratingBar.setRating(0);
+                p2_ratingBar.setRating(0);
+                start_button.setEnabled(true);
+                gameTime = 10;
                 break;
             default:
                 break;
@@ -68,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.start_button:
                 Intent intent = new Intent(MainActivity.this, PlayGameActivity.class);
+                int first = whoGoesFirst();
+                intent.putExtra(getResources().getString(R.string.goesFirstKey), first);
                 intent.putExtra(getResources().getString(R.string.gameTimeKey), gameTime);
                 startActivityForResult(intent, PLAY_GAME_RETURN_OKAY);
                 break;
@@ -77,31 +99,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //-------------------------------------------------------------
+    private int whoGoesFirst(){
+        Random rn = new Random();
+        int random = rn.nextInt(10) + 1;
+
+        if (random <= separate){
+            separate--;
+            return 1;
+        } else {
+            separate++;
+            return 2;
+        }
+    }
+
+//-------------------------------------------------------------
     // Decides if tournament is over or if players stars is incremented
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         int increment = 1;
-        RatingBar p1_ratingBar = (RatingBar)findViewById(R.id.player1_rating);
-        RatingBar p2_ratingBar = (RatingBar)findViewById(R.id.player2_rating);
 
         switch (requestCode){
             case PLAY_GAME_RETURN_OKAY:
+
                 if (resultCode == RESULT_OK){
                     int winner = data.getExtras().getInt(getResources().getString(R.string.winnerKey));
+
                     if (winner == 1){  //data = 1 -> player 1 won
                         p1_ratingBar.setRating(p1_ratingBar.getRating()+increment);
                         final int rating = (int)p1_ratingBar.getRating();
                         if(rating == (getResources().getInteger(R.integer.max_score))){
                             Toast.makeText(MainActivity.this, "P1 WINS!", Toast.LENGTH_LONG).show();
+                            start_button.setEnabled(false);
                         }
                     } else if (winner == 2){ //data = 2 -> player 2 won
                         p2_ratingBar.setRating(p2_ratingBar.getRating()+increment);
                         final int rating = (int)p2_ratingBar.getRating();
                         if(rating == (getResources().getInteger(R.integer.max_score))){
                             Toast.makeText(MainActivity.this, "P2 WINS!", Toast.LENGTH_LONG).show();
+                            start_button.setEnabled(false);
                         }
                     } else
                         Toast.makeText(MainActivity.this, "NO WINNER", Toast.LENGTH_LONG).show();
+
                 }
                 break;
             default:

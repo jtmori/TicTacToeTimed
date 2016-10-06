@@ -7,6 +7,7 @@
     <string name="ButtonText">START</string>
 
     <string name="gameTimeKey">com.miami.c11305010.timedtictactoe.game_time</string>
+    <string name="goesFirstKey">com.miami.c11305010.timedtictactoe.goes_first</string>
     <string name="winnerKey">com.miami.c11305010.timedtictactoe.the_winner</string>
 
     <!-- MENU STRING -->

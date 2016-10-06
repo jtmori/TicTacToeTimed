@@ -55,8 +55,12 @@ public class PlayGameActivity extends AppCompatActivity {
 
 //-----------------------------------------------------------------
     private void setFirstPlayer() {
-        //TODO : determine who goes first
-        currentPlayer = PLAYER_ONE;
+        int first = getIntent().getIntExtra(getResources().getString(R.string.goesFirstKey), 0);
+        if (first == 1) {
+            currentPlayer = PLAYER_ONE;
+        } else {
+            currentPlayer = PLAYER_TWO;
+        }
 
         setImageVisibility();
     }
@@ -133,61 +137,43 @@ public class PlayGameActivity extends AppCompatActivity {
             case R.id.place00:
                 place = 0;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place01:
                 place = 1;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place02:
                 place = 2;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place10:
                 place = 3;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place11:
                 place = 4;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place12:
                 place = 5;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place20:
                 place = 6;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place21:
                 place = 7;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             case R.id.place22:
                 place = 8;
                 checkWinner(place, id, rscId);
-                progressBar.setProgress(0);
-                currentPlayer = !currentPlayer;
                 break;
             default:
                 break;
         }
-        setImageVisibility();
+
     }
 
 //------------------------------------------------------------------------
@@ -237,6 +223,11 @@ public class PlayGameActivity extends AppCompatActivity {
         if(checkVertical(place, player)){
             returnWinner(player);
         }
+
+        //set next player
+        progressBar.setProgress(0);
+        currentPlayer = !currentPlayer;
+        setImageVisibility();
     }
 
 //-----------------------------------------------------------------------
