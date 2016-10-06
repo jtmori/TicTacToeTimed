@@ -6,6 +6,7 @@
     <dimen name="image_dimen">60dp</dimen>
     <dimen name="image_padding">3dp</dimen>
     <dimen name="image_margin">10dp</dimen>
+    <dimen name="tictac_image_dimen">100dp</dimen>
     <dimen name="player_textsize">60dp</dimen>
 
     <dimen name="rating_bar_h">100dp</dimen>
